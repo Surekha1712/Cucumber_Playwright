@@ -1,0 +1,10 @@
+{
+  "default": {
+    "require": [
+      "features/step_definitions/*.js",
+      "features/support/*.js"
+    ],
+    "format": ["progress"],
+    "timeout": 60000
+  }
+}
