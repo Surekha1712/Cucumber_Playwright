@@ -6,7 +6,7 @@ let browser;
 
 // ------------------- BACKGROUND -------------------
 Given('I am on the OrangeHRM login page', async function () {
-  browser = await chromium.launch({ headless: false }); // set to true for CI runs
+  browser = await chromium.launch({ headless: true }); // set to true for CI runs
   const context = await browser.newContext();
   this.page = await context.newPage();
 
