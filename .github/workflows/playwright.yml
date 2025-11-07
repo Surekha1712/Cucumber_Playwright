@@ -190,7 +190,7 @@ jobs:
 
       # Step 4: Clean old artifacts before running tests
       - name: Clean Artifacts Folder
-        run: node features/support/cleanArtifacts.js
+        run: node features/support/artifacts.js
 
       # Step 5: Install Playwright browsers
       - name: Install Playwright Browsers
