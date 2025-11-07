@@ -200,7 +200,7 @@ jobs:
       - name: Run Playwright + Cucumber Tests
         run: |
           mkdir -p artifacts
-          npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
+          npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression'}}"
 
       # Step 7: Upload test report as GitHub artifact
       - name: Upload Test Report
