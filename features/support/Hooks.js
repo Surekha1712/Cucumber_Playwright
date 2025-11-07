@@ -26,7 +26,7 @@ Before(async function () {
 AfterStep(async function ({ result }) {
   if (result.status === Status.FAILED) {
    
-    await this.page.screenshot({ path: 'login1.png', fullPage: true });
+    await this.page.screenshot({ path: 'artifacts/screen1.png', fullPage: true });
 
   }
 });

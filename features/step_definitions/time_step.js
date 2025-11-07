@@ -20,12 +20,12 @@ When('I open the Time at Work widget', async function () {
   const timeWidgetButton = this.page.locator('//button[@class="oxd-icon-button oxd-icon-button--solid-main orangehrm-attendance-card-action"]');
   //await this.page.locator('//button[@class="oxd-icon-button oxd-icon-button--solid-main orangehrm-attendance-card-action"]').clear();
   await timeWidgetButton.click();
-  await this.page.waitForTimeout(3000);
+  await this.page.waitForTimeout(5000);
   
 });
 
 When('I select the date {string}', async function (dateValue) {
-  const dateInput = this.page.locator("(//input[@placeholder='yyyy-dd-mm'])[1]");
+  const dateInput = this.page.locator("(//input[@placeholder='yyyy-dd-mm'])");
   await dateInput.click();
   await dateInput.fill(dateValue);
   
@@ -52,14 +52,14 @@ Then('I should see the note saved successfully', async function () {
   expect(currentNote).not.toBe('');
   console.log('Note verified successfully:', currentNote);
   const fs = require('fs');
-fs.appendFileSync('note_log.txt', `\n${new Date().toISOString()} - ${currentNote}`);
+fs.appendFileSync('artifacts/note_log.txt', `\n${new Date().toISOString()} - ${currentNote}`);
 
 });
 
-Then('I click on the Out button', async function () {
-  const inButton = this.page.locator("//button[normalize-space()='Out']");
+Then('I click on the In button', async function () {
+  const inButton = this.page.locator("//button[normalize-space()='In']");
   //await this.page.locator("//button[normalize-space()='In']").clear();
   await inButton.click();
   console.log('Clicked on the In button');
-  await this.page.waitForTimeout(3000);
+  await this.page.waitForTimeout(2000);
 });
