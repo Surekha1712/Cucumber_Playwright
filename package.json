@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+ "scripts": {
+  "test": "node features/support/artifacts.js && npx cucumber-js --format html:artifacts/report.html"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
