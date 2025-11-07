@@ -110,7 +110,7 @@
 #           name: cucumber-playwright-report
 #           path: reports/cucumber/
 
-name: Playwright + Cucumber Tests (Weekend Schedule)
+# name: Playwright + Cucumber Tests (Weekend Schedule)
 
 on:
   push:
@@ -178,11 +178,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js
+      # Step 2: Setup Node.js (✅ Fixed to Node 22)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22.x
+
+      # (Optional) Cache npm dependencies for faster installs
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       # Step 3: Install dependencies
       - name: Install Dependencies
@@ -196,11 +205,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Step 6: Run Cucumber Tests
+      # Step 6: Run Playwright + Cucumber Tests
       - name: Run Playwright + Cucumber Tests
         run: |
           mkdir -p artifacts
-          npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression'}}"
+          node -v
+          npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
 
       # Step 7: Upload test report as GitHub artifact
       - name: Upload Test Report
