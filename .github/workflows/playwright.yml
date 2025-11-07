@@ -209,12 +209,12 @@ jobs:
           name: cucumber-playwright-report
           path: artifacts/report.html
 
-      # Step 8 (Optional): Auto-commit the latest report to your repo
-      - name: Commit and Push HTML Report
-        if: ${{ always() }}
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add artifacts/report.html
-          git commit -m "Automated test report on $(date)"
-          git push
+      # # Step 8 (Optional): Auto-commit the latest report to your repo
+      # - name: Commit and Push HTML Report
+      #   if: ${{ always() }}
+      #   run: |
+      #     git config user.name "github-actions"
+      #     git config user.email "github-actions@github.com"
+      #     git add artifacts/report.html
+      #     git commit -m "Automated test report on $(date)"
+      #     git push
