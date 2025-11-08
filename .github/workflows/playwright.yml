@@ -110,118 +110,7 @@
 #           name: cucumber-playwright-report
 #           path: reports/cucumber/
 
-#  name: Playwright + Cucumber Tests (Weekend Schedule)
-# on:
-#   push:
-#     branches: [ main, master ]
-
-#   pull_request:
-#     branches: [ main, master ]
-
-#   schedule:
-#     # 🕙 Every Saturday and Sunday at 10:00 AM IST (4:30 AM UTC)
-#     - cron: '30 4 * * 6,0'
-
-#   workflow_dispatch: # Manual trigger option
-#     inputs:
-#       test_tags:
-#         description: 'Cucumber tags to filter tests (e.g., @Regression, @login)'
-#         required: false
-#         default: '@Regression'
-#         type: string
-#       env:
-#         description: 'Environment (staging or production)'
-#         required: false
-#         default: 'staging'
-#         type: string
-#       browser:
-#         description: 'Browser (chromium, firefox, webkit)'
-#         required: false
-#         default: 'chromium'
-#         type: choice
-#         options:
-#           - 'chromium'
-#           - 'firefox'
-#           - 'webkit'
-#       parallel:
-#         description: 'Parallel workers count'
-#         required: false
-#         default: '2'
-#         type: choice
-#         options:
-#           - '1'
-#           - '2'
-#           - '3'
-#           - '4'
-#           - '5'
-#       debug:
-#         description: 'Enable debug mode (true/false)'
-#         required: false
-#         default: 'false'
-#         type: choice
-#         options:
-#           - 'true'
-#           - 'false'
-
-# permissions:
-#   contents: write
-#   actions: write
-#   checks: write
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       # Step 1: Checkout source code
-#       - name: Checkout Code
-#         uses: actions/checkout@v4
-
-#       # Step 2: Setup Node.js (✅ Fixed to Node 22)
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: 22.x
-
-#       # (Optional) Cache npm dependencies for faster installs
-#       - name: Cache npm dependencies
-#         uses: actions/cache@v4
-#         with:
-#           path: ~/.npm
-#           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-#           restore-keys: |
-#             ${{ runner.os }}-node-
-
-#       # Step 3: Install dependencies
-#       - name: Install Dependencies
-#         run: npm install
-
-#       # Step 4: Clean old artifacts before running tests
-#       - name: Clean Artifacts Folder
-#         run: node features/support/artifacts.js
-
-#       # Step 5: Install Playwright browsers
-#       - name: Install Playwright Browsers
-#         run: npx playwright install --with-deps
-
-#       # Step 6: Run Playwright + Cucumber Tests
-#       - name: Run Playwright + Cucumber Tests
-#         run: |
-#           mkdir -p artifacts
-#           node -v
-#           npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
-
-#       # Step 7: Upload test report as GitHub artifact
-#       - name: Upload Test Report
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: cucumber-playwright-report
-#           path: artifacts/report.html
-
-    
-# # 
 name: Playwright + Cucumber Tests (Weekend Schedule)
-
 on:
   push:
     branches: [ main, master ]
@@ -233,7 +122,7 @@ on:
     # 🕙 Every Saturday and Sunday at 10:00 AM IST (4:30 AM UTC)
     - cron: '30 4 * * 6,0'
 
-  workflow_dispatch: # Enables manual "Run workflow" button
+  workflow_dispatch: # Manual trigger option
     inputs:
       test_tags:
         description: 'Cucumber tags to filter tests (e.g., @Regression, @login)'
@@ -284,23 +173,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
+      # Step 1: Checkout source code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js (Cucumber requires Node 20+)
+      # Step 2: Setup Node.js (✅ Fixed to Node 22)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
 
+      # (Optional) Cache npm dependencies for faster installs
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       # Step 3: Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Clean artifacts folder
+      # Step 4: Clean old artifacts before running tests
       - name: Clean Artifacts Folder
-        run: node artifacts.js   # ✅ your cleanup script filename
+        run: node features/support/artifacts.js
 
       # Step 5: Install Playwright browsers
       - name: Install Playwright Browsers
@@ -308,16 +206,118 @@ jobs:
 
       # Step 6: Run Playwright + Cucumber Tests
       - name: Run Playwright + Cucumber Tests
-        env:
-          CI: true               # ✅ ensures headless mode in GitHub Actions
         run: |
           mkdir -p artifacts
           node -v
           npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
 
-      # Step 7: Upload test report to GitHub
+      # Step 7: Upload test report as GitHub artifact
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-playwright-report
           path: artifacts/report.html
+
+    
+# # # 
+# name: Playwright + Cucumber Tests (Weekend Schedule)
+
+# on:
+#   push:
+#     branches: [ main, master ]
+
+#   pull_request:
+#     branches: [ main, master ]
+
+#   schedule:
+#     # 🕙 Every Saturday and Sunday at 10:00 AM IST (4:30 AM UTC)
+#     - cron: '30 4 * * 6,0'
+
+#   workflow_dispatch: # Enables manual "Run workflow" button
+#     inputs:
+#       test_tags:
+#         description: 'Cucumber tags to filter tests (e.g., @Regression, @login)'
+#         required: false
+#         default: '@Regression'
+#         type: string
+#       env:
+#         description: 'Environment (staging or production)'
+#         required: false
+#         default: 'staging'
+#         type: string
+#       browser:
+#         description: 'Browser (chromium, firefox, webkit)'
+#         required: false
+#         default: 'chromium'
+#         type: choice
+#         options:
+#           - 'chromium'
+#           - 'firefox'
+#           - 'webkit'
+#       parallel:
+#         description: 'Parallel workers count'
+#         required: false
+#         default: '2'
+#         type: choice
+#         options:
+#           - '1'
+#           - '2'
+#           - '3'
+#           - '4'
+#           - '5'
+#       debug:
+#         description: 'Enable debug mode (true/false)'
+#         required: false
+#         default: 'false'
+#         type: choice
+#         options:
+#           - 'true'
+#           - 'false'
+
+# permissions:
+#   contents: write
+#   actions: write
+#   checks: write
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # Step 1: Checkout repository
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       # Step 2: Setup Node.js (Cucumber requires Node 20+)
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22.x
+
+#       # Step 3: Install dependencies
+#       - name: Install Dependencies
+#         run: npm install
+
+#       # Step 4: Clean artifacts folder
+#       - name: Clean Artifacts Folder
+#         run: node artifacts.js   # ✅ your cleanup script filename
+
+#       # Step 5: Install Playwright browsers
+#       - name: Install Playwright Browsers
+#         run: npx playwright install --with-deps
+
+#       # Step 6: Run Playwright + Cucumber Tests
+#       - name: Run Playwright + Cucumber Tests
+#         env:
+#           CI: true               # ✅ ensures headless mode in GitHub Actions
+#         run: |
+#           mkdir -p artifacts
+#           node -v
+#           npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
+
+#       # Step 7: Upload test report to GitHub
+#       - name: Upload Test Report
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: cucumber-playwright-report
+#           path: artifacts/report.html
