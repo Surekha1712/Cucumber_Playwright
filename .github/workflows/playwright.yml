@@ -111,6 +111,7 @@
 #           path: reports/cucumber/
 
 name: Playwright + Cucumber Tests (Weekend Schedule)
+
 on:
   push:
     branches: [ main, master ]
@@ -177,13 +178,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js (✅ Fixed to Node 22)
+      # Step 2: Setup Node.js (✅ Node 22)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
 
-      # (Optional) Cache npm dependencies for faster installs
+      # Step 3: Cache npm dependencies
       - name: Cache npm dependencies
         uses: actions/cache@v4
         with:
@@ -192,31 +193,36 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Step 3: Install dependencies
+      # Step 4: Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Clean old artifacts before running tests
+      # Step 5: Clean old artifacts before running tests
       - name: Clean Artifacts Folder
         run: node features/support/artifacts.js
 
-      # Step 5: Install Playwright browsers
+      # Step 6: Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Step 6: Run Playwright + Cucumber Tests
-      - name: Run Playwright + Cucumber Tests
+      # ✅ Step 7: Run Playwright + Cucumber Tests (Headless Mode)
+      - name: Run Playwright + Cucumber Tests (Headless)
+        env:
+          CI: true
         run: |
+          echo "Running Playwright tests in headless mode..."
           mkdir -p artifacts
           node -v
           npx cucumber-js --format html:artifacts/report.html --tags "${{ github.event.inputs.test_tags || '@Regression' }}"
+          echo "✅ Test execution completed successfully!"
 
-      # Step 7: Upload test report as GitHub artifact
+      # Step 8: Upload test report as GitHub artifact
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-playwright-report
           path: artifacts/report.html
+
 
     
 # # # 
