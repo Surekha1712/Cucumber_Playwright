@@ -1,0 +1,457 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "time-at-work-widget-in-orangehrm;select-date,-time,-and-enter-note-in-time-at-work",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Select date, time, and enter note in Time at Work",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 184590400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am logged into the OrangeHRM dashboard",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12521200099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I open the Time at Work widget",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6377032499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I select the date \"2026-08-233\"",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 216640498
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "I enter the time \"10:00 \"",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 170938600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I add a note \"This is report time in orangehrm you should be on time and complete your work\"",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81038699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I should see the note saved successfully",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4871399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "I click on the In button",
+            "match": {
+              "location": "features\\step_definitions\\time_step.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2082175400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 100920000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Regression",
+            "line": 6
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "time-at-work-widget-in-orangehrm",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Time at Work Widget in OrangeHRM",
+    "tags": [],
+    "uri": "features\\Dashboard.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "orangehrm-login-and-forgot-password;verify-login-functionality-with-multiple-credential-sets",
+        "keyword": "Scenario Outline",
+        "line": 78,
+        "name": "Verify login functionality with multiple credential sets",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 216185700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "I am on the OrangeHRM login page",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8137041599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 73,
+            "name": "I login with username \"Admin\" and password \"admin123\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3095756198
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 74,
+            "name": "I should see \"redirected to the dashboard\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50794299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 91066999
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 71
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "orangehrm-login-and-forgot-password;verify-login-functionality-with-multiple-credential-sets",
+        "keyword": "Scenario Outline",
+        "line": 79,
+        "name": "Verify login functionality with multiple credential sets",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 215198399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "I am on the OrangeHRM login page",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7197143399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 73,
+            "name": "I login with username \"Admin\" and password \"123\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3119425998
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 74,
+            "name": "I should see \"Invalid credentials\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17554699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 80226900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 71
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "orangehrm-login-and-forgot-password;verify-login-functionality-with-multiple-credential-sets",
+        "keyword": "Scenario Outline",
+        "line": 80,
+        "name": "Verify login functionality with multiple credential sets",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 197847900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "I am on the OrangeHRM login page",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7744890400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 73,
+            "name": "I login with username \"\" and password \"\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3133567700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 74,
+            "name": "I should see \"required field error message\"",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29487898
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 108688300
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 71
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "orangehrm-login-and-forgot-password;forgot-password-flow",
+        "keyword": "Scenario",
+        "line": 83,
+        "name": "Forgot Password flow",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 216213799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 69,
+            "name": "I am on the OrangeHRM login page",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8706226999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 84,
+            "name": "I click on the Forgot your password link",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2543267499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 85,
+            "name": "I enter username \"Admin1\" on forgot page",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36309698
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "I click the Reset Password button",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3043838499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 87,
+            "name": "I should see the password reset confirmation",
+            "match": {
+              "location": "features\\step_definitions\\steps.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27564700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 92506500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@forgot",
+            "line": 82
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "orangehrm-login-and-forgot-password",
+    "line": 66,
+    "keyword": "Feature",
+    "name": "OrangeHRM Login and Forgot Password",
+    "tags": [],
+    "uri": "features\\orangehrm.feature"
+  }
+]

@@ -1,21 +1,23 @@
 {
   "name": "framework",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright + Cucumber automation framework",
   "main": "index.js",
- "scripts": {
-  "test": "node features/support/artifacts.js && npx cucumber-js --format html:artifacts/report.html"
-},
-
+  "scripts": {
+    "test": "npx cucumber-js ",
+    "report": "node helper/report.js",
+    "test:report": "npm run test && npm run report"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Surekha",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.10.0"
-  },
-  "dependencies": {
-    "@cucumber/cucumber": "^12.2.0"
+    "@types/node": "^24.10.0",
+    "fs-extra": "^11.3.2",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "playwright": "^1.56.1"
   }
 }
